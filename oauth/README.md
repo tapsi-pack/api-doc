@@ -65,6 +65,143 @@ curl --location 'https://api.tapsi.cab/api/v1/delivery/external/oauth2/token' \
 --data-urlencode 'grant_type=authorization_code' \
 --data-urlencode 'code=User PAT'
 ```
+### Usage in Other Languages
+
+<details>
+  <summary>PHP</summary>
+
+```
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.tapsi.cab/api/v1/delivery/external/oauth2/token',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS => 'grant_type=authorization_code&code=User PAT',
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/x-www-form-urlencoded',
+    'Accept: application/json',
+    'Authorization: Bearer Client Secret'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+```
+</details>
+
+<details>
+  <summary>Go</summary>
+
+```
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://api.tapsi.cab/api/v1/delivery/external/oauth2/token"
+  method := "POST"
+
+  payload := strings.NewReader("grant_type=authorization_code&code=User PAT")
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+  req.Header.Add("Accept", "application/json")
+  req.Header.Add("Authorization", "Bearer Client Secret")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+```
+</details>
+
+<details>
+  <summary>Python</summary>
+
+```
+import requests
+
+url = "https://api.tapsi.cab/api/v1/delivery/external/oauth2/token"
+
+payload='grant_type=authorization_code&code=User PAT'
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer Client Secret'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+```
+</details>
+
+<details>
+  <summary>NodeJS</summary>
+
+```
+var axios = require('axios');
+var qs = require('qs');
+var data = qs.stringify({
+  'grant_type': 'authorization_code',
+  'code': 'User PAT' 
+});
+var config = {
+  method: 'post',
+  url: 'https://api.tapsi.cab/api/v1/delivery/external/oauth2/token',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded', 
+    'Accept': 'application/json', 
+    'Authorization': 'Bearer Client Secret'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+```
+</details>
 
 ### 2. Access Token Expiry
 
@@ -112,7 +249,6 @@ Response:
 ```
 
 Example Curl:
-
 ```
 curl --location 'https://api.tapsi.cab/api/v1/delivery/external/oauth2/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -120,6 +256,142 @@ curl --location 'https://api.tapsi.cab/api/v1/delivery/external/oauth2/token' \
 --data-urlencode 'grant_type=refresh_token' \
 --data-urlencode 'refresh_token=User Refresh Token'
 ```
+### Usage in Other Languages
+
+<details>
+  <summary>PHP</summary>
+
+```
+<?php
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.tapsi.cab/api/v1/delivery/external/oauth2/token',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS => 'grant_type=refresh_token&refresh_token=User Refresh Token',
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/x-www-form-urlencoded',
+    'Accept: application/json',
+    'Authorization: Bearer Client Secret'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+```
+</details>
+
+<details>
+  <summary>Go</summary>
+
+```
+package main
+
+import (
+  "fmt"
+  "strings"
+  "net/http"
+  "io/ioutil"
+)
+
+func main() {
+
+  url := "https://api.tapsi.cab/api/v1/delivery/external/oauth2/token"
+  method := "POST"
+
+  payload := strings.NewReader("grant_type=refresh_token&refresh_token=User Refresh Token")
+
+  client := &http.Client {
+  }
+  req, err := http.NewRequest(method, url, payload)
+
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+  req.Header.Add("Accept", "application/json")
+  req.Header.Add("Authorization", "Bearer Client Secret")
+
+  res, err := client.Do(req)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  defer res.Body.Close()
+
+  body, err := ioutil.ReadAll(res.Body)
+  if err != nil {
+    fmt.Println(err)
+    return
+  }
+  fmt.Println(string(body))
+}
+
+```
+</details>
+
+<details>
+  <summary>Python</summary>
+
+```
+import requests
+
+url = "https://api.tapsi.cab/api/v1/delivery/external/oauth2/token"
+
+payload='grant_type=refresh_token&refresh_token=User Refresh Token'
+headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer Client Secret'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+```
+</details>
+
+<details>
+  <summary>NodeJS</summary>
+
+```
+var axios = require('axios');
+var qs = require('qs');
+var data = qs.stringify({
+  'grant_type': 'refresh_token',
+  'refresh_token': 'User Refresh Token' 
+});
+var config = {
+  method: 'post',
+  url: 'https://api.tapsi.cab/api/v1/delivery/external/oauth2/token',
+  headers: { 
+    'Content-Type': 'application/x-www-form-urlencoded', 
+    'Accept': 'application/json', 
+    'Authorization': 'Bearer Client Secret'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+```
+</details>
 
 Currently, the access token is valid for a duration of 2 days. When it expires, users need to log in using their
 Personal Access Token (PAT) again, following the same process as in Step 1.
