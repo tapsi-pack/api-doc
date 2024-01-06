@@ -24,6 +24,27 @@ To obtain your tokens, please contact us at [Tapsi Pack](https://pack.tapsi.ir/l
 
 ## Token Management for Clients
 
+### 0. Generate Personal Access Token (PAT)
+
+To generate a Personal Access Token (PAT), clients are required to follow these steps:
+
+1. **Navigate to Tapsi Pack External Auth:**
+   Clients should direct their users to [Tapsi Pack External Auth](https://pack.tapsi.ir/external-auth).
+
+2. **Client Selection:**
+   On the External Auth page, users will encounter a list displaying all available clients within Tapsi Pack. Clients need to choose the specific client they wish to generate a PAT for.
+
+   ![APIs flow](../images/generate-pat-2.png)
+
+3. **Grant Required Access:**
+   After selecting a client, users should grant the necessary accesses to the chosen client. This step ensures that the client can perform actions on behalf of the users.
+
+   ![APIs flow](../images/generate-pat-3.png)
+
+4. **View and Copy PAT:**
+   Once the required accesses are granted, users will be able to view a PAT. This PAT should be copied and provided to the respective client. Clients will utilize this token to make requests on behalf of the users.
+
+
 ### 1. Generate Access Token and Refresh Token using Client ID and PAT
 
 Clients can generate both an **Access Token** and a **Refresh Token** using their **Client ID** in combination with the
